@@ -22,6 +22,10 @@ playwright-demoqa-tests/
     │   ├── webtables.spec.ts          # 6. Web Tables (adicionar, buscar e deletar registro)
     │   ├── alerts.spec.ts             # 7. Alerta de prompt (digitar texto e validar resultado)
     │   └── tool-tips.spec.ts          # 8. Tooltip (hover no botão e validar a dica)
+    ├── elementos - Painéis retráteis, busca dinâmica e modais/
+    │   ├── accordian.spec.ts          # 12. Accordion (painéis expansíveis)
+    │   ├── auto-complete.spec.ts      # 13. Auto Complete (preenchimento automático com sugestões)
+    │   └── modal-dialogs.spec.ts      # 14. Modal Dialogs (abrir, validar e fechar modal)
     └── Drag & Drop avançado e dropdowns React/
         ├── droppable.spec.ts          # 9. Drag & Drop (arrastar caixa para o alvo)
         ├── select-menu.spec.ts        # 10. React Select (dropdown com grupo de opções)
@@ -43,7 +47,7 @@ playwright-demoqa-tests/
 ## O que falta (roadmap)
 
 ### Páginas do DemoQA ainda não cobertas
-- **Elements restantes**: Accordion, Auto Complete, Slider, Tabs, Modal Dialogs, Nested Frames, além das abas avançadas de Drag & Drop (Accept, Prevent Propagation, Revert) e os demais tipos de Select Menu (Select One, Old Style, valores múltiplos em outras páginas).
+- **Elements restantes**: Slider, Tabs, Nested Frames, além das abas avançadas de Drag & Drop (Accept, Prevent Propagation, Revert) e os demais tipos de Select Menu (Select One, Old Style, valores múltiplos em outras páginas).
 - **Forms**: Practice Form (formulário grande com upload de arquivo, validações e modal de sucesso).
 - **Links**: validação de links quebrados e chamadas de API.
 - **Upload and Download**: envio e download de arquivos.
