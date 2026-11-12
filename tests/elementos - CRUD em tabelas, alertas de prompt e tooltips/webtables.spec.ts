@@ -8,19 +8,30 @@ test("Deve adicionar, buscar e deletar um registro na tabela", async ({
 
   // Passo A: Adicionar novo registro
   await page.locator("#addNewRecordButton").click();
+
+  // O modal de cadastro abre com animação; aguarda ficar visível antes de preencher
+  // para evitar race condition com o preenchimento dos campos
+  await page.locator("#firstName").waitFor({ state: "visible" });
+
   await page.locator("#firstName").fill("Bruce");
   await page.locator("#lastName").fill("Wayne");
   await page.locator("#userEmail").fill("batman@gotham.com");
   await page.locator("#age").fill("35");
   await page.locator("#salary").fill("1000000");
   await page.locator("#department").fill("Vigilância");
+
+  // O botão submit pode ficar coberto por rodapé/anúncios; garante que esteja visível antes de clicar
+  await page.locator("#submit").scrollIntoViewIfNeeded();
   await page.locator("#submit").click();
+
+  // Aguarda o modal fechar após o submit
+  await page.locator("#firstName").waitFor({ state: "hidden" });
 
   // Passo B: Buscar o registro criado (A tabela filtra dinamicamente)
   const barraBusca = page.locator("#searchBox");
-  await barraBusca.fill("Bruce");
+  await barraBusca.pressSequentially("Bruce", { delay: 100 });
 
-  // Validamos se o e-mail que acabamos de cadastrar está visível na tabela filtrada
+  // Aguarda o filtro ser aplicado e o registro aparecer na tabela
   const corpoTabela = page.locator(".rt-tbody");
   await expect(corpoTabela).toContainText("batman@gotham.com");
 
