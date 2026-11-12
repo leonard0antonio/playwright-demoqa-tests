@@ -18,10 +18,14 @@ playwright-demoqa-tests/
     ├── elementos - Componentes com mudança de estado/
     │   ├── date-picker.spec.ts        # 4. Date Picker (digitar data + navegar no calendário)
     │   └── progress-bar.spec.ts       # 5. Progress Bar (espera a barra chegar a 100%)
-    └── CRUD em tabelas, alertas de prompt e tooltips/
-        ├── webtables.spec.ts          # 6. Web Tables (adicionar, buscar e deletar registro)
-        ├── alerts.spec.ts             # 7. Alerta de prompt (digitar texto e validar resultado)
-        └── tool-tips.spec.ts          # 8. Tooltip (hover no botão e validar a dica)
+    ├── CRUD em tabelas, alertas de prompt e tooltips/
+    │   ├── webtables.spec.ts          # 6. Web Tables (adicionar, buscar e deletar registro)
+    │   ├── alerts.spec.ts             # 7. Alerta de prompt (digitar texto e validar resultado)
+    │   └── tool-tips.spec.ts          # 8. Tooltip (hover no botão e validar a dica)
+    └── Drag & Drop avançado e dropdowns React/
+        ├── droppable.spec.ts          # 9. Drag & Drop (arrastar caixa para o alvo)
+        ├── select-menu.spec.ts        # 10. React Select (dropdown com grupo de opções)
+        └── multi-menu.spec.ts         # 11. Multi-select (selecionar várias cores por teclado)
 ```
 
 ## O que mudou recentemente
@@ -31,11 +35,15 @@ playwright-demoqa-tests/
   - `webtables.spec.ts` — fluxo completo de CRUD na tabela dinâmica (criar → buscar → deletar → validar tabela vazia).
   - `alerts.spec.ts` — trata o dialog de `prompt` com `page.on("dialog")` enviando texto e valida o `#promptResult`.
   - `tool-tips.spec.ts` — `hover()` no botão e validação do `.tooltip-inner` injetado no DOM.
+- **Nova pasta `tests/Drag & Drop avançado e dropdowns React/`** com 3 novos specs:
+  - `droppable.spec.ts` — `dragTo()` da caixa para o alvo, validando texto `Dropped!` e a cor de fundo.
+  - `select-menu.spec.ts` — React Select (`#withOptGroup`): clica, escolhe opção por texto e valida o valor exibido.
+  - `multi-menu.spec.ts` — multi-select de cores digitando `Green`/`Black` + Enter e validando os chips.
 
 ## O que falta (roadmap)
 
 ### Páginas do DemoQA ainda não cobertas
-- **Elements restantes**: Accordion, Auto Complete, Slider, Tabs, Select Menu, Modal Dialogs, Nested Frames, Drag & Drop (widgets).
+- **Elements restantes**: Accordion, Auto Complete, Slider, Tabs, Modal Dialogs, Nested Frames, além das abas avançadas de Drag & Drop (Accept, Prevent Propagation, Revert) e os demais tipos de Select Menu (Select One, Old Style, valores múltiplos em outras páginas).
 - **Forms**: Practice Form (formulário grande com upload de arquivo, validações e modal de sucesso).
 - **Links**: validação de links quebrados e chamadas de API.
 - **Upload and Download**: envio e download de arquivos.
