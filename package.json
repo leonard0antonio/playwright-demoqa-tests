@@ -1,0 +1,23 @@
+{
+  "name": "playwright-demoqa-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leonard0antonio/playwright-demoqa-tests.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/leonard0antonio/playwright-demoqa-tests/issues"
+  },
+  "homepage": "https://github.com/leonard0antonio/playwright-demoqa-tests#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.65.0",
+    "@types/node": "^26.6.6"
+  }
+}
