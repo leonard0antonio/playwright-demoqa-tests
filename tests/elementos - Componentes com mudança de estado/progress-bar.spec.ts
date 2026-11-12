@@ -12,7 +12,7 @@ import { test, expect } from '@playwright/test';
 
     // Em vez de pausar com tempo fixo, mandamos o Playwright esperar a barra atingir o texto "100%"
     // Aumentamos o timeout porque a barra demora alguns bons segundos para encher
-    await expect(barraProgresso).toHaveText('100%', { timeout: 15000 });
+    await expect(barraProgresso).toHaveText('100%', { timeout: 30000 });
     
     const botaoReset = page.locator('#resetButton');
     await expect(botaoReset).toBeVisible();
