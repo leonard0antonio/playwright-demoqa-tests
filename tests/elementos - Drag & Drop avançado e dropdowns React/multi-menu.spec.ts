@@ -18,7 +18,9 @@ test('Deve selecionar múltiplas opções em um dropdown de cores', async ({ pag
   await page.keyboard.type('Black');
   await page.keyboard.press('Enter');
 
-  // Valida se os dois "chips" de cores foram criados dentro do container do React Select
-  await expect(page.locator('#react-select-4')).toContainText('Green');
-  await expect(page.locator('#react-select-4')).toContainText('Black');
+  // Valida se os dois "chips" de cores foram criados dentro do container do React Select.
+  // O container em si não possui id (só o input interno tem); os chips expõem botões
+  // de remoção com aria-label estável, que servem como âncora confiável.
+  await expect(page.locator('[aria-label="Remove Green"]')).toBeVisible();
+  await expect(page.locator('[aria-label="Remove Black"]')).toBeVisible();
 });
