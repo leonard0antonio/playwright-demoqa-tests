@@ -32,7 +32,8 @@ test("Deve adicionar, buscar e deletar um registro na tabela", async ({
   await barraBusca.pressSequentially("Bruce", { delay: 100 });
 
   // Aguarda o filtro ser aplicado e o registro aparecer na tabela
-  const corpoTabela = page.locator(".rt-tbody");
+  // O DemoQA migrou de Reactable para uma tabela HTML simples: o corpo é um <tbody> puro
+  const corpoTabela = page.locator("table tbody");
   await expect(corpoTabela).toContainText("batman@gotham.com");
 
   // Passo C: Deletar o registro
@@ -40,6 +41,7 @@ test("Deve adicionar, buscar e deletar um registro na tabela", async ({
   const botaoDeletar = page.locator('span[title="Delete"]').first();
   await botaoDeletar.click();
 
-  // Validamos se a tabela ficou vazia após a deleção
-  await expect(page.locator(".rt-noData")).toBeVisible();
+  // Validamos se a tabela ficou vazia após a deleção.
+  // A tabela atual não renderiza mensagem de "sem dados": o <tbody> fica sem nenhuma linha
+  await expect(page.locator("table tbody tr")).toHaveCount(0);
 });
