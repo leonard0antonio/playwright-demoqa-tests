@@ -20,7 +20,11 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  /* 7 workers em paralelo sobrecarregam o demoqa.com (timeouts de goto e crash do firefox);
+     limitar a concorrência mantém os testes estáveis sem perder velocidade relevante. */
+  workers: process.env.CI ? 1 : 2,
+  /* 30s é curto para páginas remotas em horário de carga; 60s evita timeouts de ambiente. */
+  timeout: 60000,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
