@@ -38,21 +38,22 @@ playwright-demoqa-tests/
         └── multi-menu.spec.ts         # 11. Multi-select — selecionar várias cores por teclado
 ```
 
-## O que mudou recentemente
+## Visão geral do projeto
 
-- **`progress-bar.spec.ts`**: timeout da espera pelo texto `100%` aumentado de **15s para 30s** — a barra demora para encher e 15s estourava em máquinas/CI mais lentas.
-- **Nova pasta `tests/CRUD em tabelas, alertas de prompt e tooltips/`** com 3 novos specs:
-  - `webtables.spec.ts` — fluxo completo de CRUD na tabela dinâmica (criar → buscar → deletar → validar tabela vazia).
-  - `alerts.spec.ts` — trata o dialog de `prompt` com `page.on("dialog")` enviando texto e valida o `#promptResult`.
-  - `tool-tips.spec.ts` — `hover()` no botão e validação do `.tooltip-inner` injetado no DOM.
-- **Nova pasta `tests/Drag & Drop avançado e dropdowns React/`** com 3 novos specs:
-  - `droppable.spec.ts` — `dragTo()` da caixa para o alvo, validando texto `Dropped!` e a cor de fundo.
-  - `select-menu.spec.ts` — React Select (`#withOptGroup`): clica, escolhe opção por texto e valida o valor exibido.
-  - `multi-menu.spec.ts` — multi-select de cores digitando `Green`/`Black` + Enter e validando os chips.
-- **Nova pasta `tests/elementos - Painéis retráteis, busca dinâmica e modais/`** com 3 novos specs:
-  - `accordian.spec.ts` — expande um painel e valida o conteúdo visível.
-  - `auto-complete.spec.ts` — digita parte de uma cor, seleciona na sugestão e valida o chip adicionado.
-  - `modal-dialogs.spec.ts` — abre um modal, valida título e corpo, e fecha confirmando o desaparecimento.
+Este projeto está concluído e representa uma suíte de testes end-to-end para os principais componentes do DemoQA, cobrindo interações de UI, estados visuais, formulários, drag-and-drop, dropdowns e modais.
+
+### Cobertura implementada
+
+- **Text Box e formulários**
+- **Botões, clique duplo e clique direito**
+- **Radio buttons e seleção de opções**
+- **Date picker e progress bar**
+- **CRUD em tabela dinâmica**
+- **Alertas de prompt e tooltips**
+- **Drag & drop e menus React**
+- **Accordion, auto complete e modal dialogs**
+
+O objetivo foi validar comportamentos reais de usuário com automação estável, legível e reutilizável, usando boas práticas de espera, seleção e assertions.
 
 ## Como rodar os testes
 
@@ -114,3 +115,9 @@ O arquivo `playwright.config.ts` define:
 ## CI/CD
 
 O pipeline no GitHub Actions (`.github/workflows/playwright.yml`) roda automaticamente em `push` e `pull request` para `main`/`master`, executando os testes nos 3 browsers e publicando o relatório HTML como artifact por 30 dias.
+
+## Fechamento com chave de ouro
+
+Este projeto foi concluído com sucesso e está pronto para uso como base de automação E2E em ambiente de validação, desenvolvimento e CI/CD. A suíte cobre os principais fluxos do DemoQA com boa estabilidade, clareza na manutenção e execução em múltiplos browsers.
+
+Com isso, o projeto fica finalizado e entregue em um estado funcional, documentado e pronto para evoluir com novas automações.
