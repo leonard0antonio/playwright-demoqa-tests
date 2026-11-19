@@ -13,7 +13,7 @@ import { test, expect } from '@playwright/test';
 
     await elementoArrastavel.dragTo(alvoDeQueda);
 
-    // O alvo muda de cor e texto ao receber o elemento
-    await expect(alvoDeQueda).toHaveText('Drop Here');
-    await expect(alvoDeQueda).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+    // O alvo confirma a soltura com texto e classe de destaque.
+    await expect(alvoDeQueda).toHaveText('Dropped!');
+    await expect(alvoDeQueda).toHaveClass(/ui-state-highlight/);
   });

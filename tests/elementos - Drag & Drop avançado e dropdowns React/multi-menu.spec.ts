@@ -11,16 +11,10 @@ test('Deve selecionar múltiplas opções em um dropdown de cores', async ({ pag
   await inputMultiplo.scrollIntoViewIfNeeded();
   await inputMultiplo.click();
 
-  // No DemoQA o dropdown múltiplo requer digitar e dar Enter para confirmar cada opção.
-  await page.keyboard.type('Green');
-  await page.keyboard.press('Enter');
-
-  await page.keyboard.type('Black');
-  await page.keyboard.press('Enter');
-
-  // Valida se os dois "chips" de cores foram criados dentro do container do React Select.
-  // O container em si não possui id (só o input interno tem); os chips expõem botões
-  // de remoção com aria-label estável, que servem como âncora confiável.
-  await expect(page.locator('[aria-label="Remove Green"]')).toBeVisible();
-  await expect(page.locator('[aria-label="Remove Black"]')).toBeVisible();
+  // Preencher o input em cada seleção mantém o foco no React Select após o primeiro Enter.
+  for (const cor of ['Green', 'Black']) {
+    await inputMultiplo.fill(cor);
+    await page.keyboard.press('Enter');
+    await expect(page.getByRole('button', { name: `Remove ${cor}` })).toBeVisible();
+  }
 });

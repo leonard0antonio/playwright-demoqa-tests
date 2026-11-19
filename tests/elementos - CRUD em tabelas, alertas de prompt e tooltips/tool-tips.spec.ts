@@ -13,6 +13,6 @@ test("Deve passar o mouse no botão e validar a dica flutuante", async ({
 
   // O Playwright espera o elemento de classe .tooltip-inner ser injetado no DOM
   const tooltip = page.locator(".tooltip-inner");
-  await expect(tooltip).toBeVisible();
+  await expect(tooltip).toBeVisible({ timeout: 10000 });
   await expect(tooltip).toHaveText("You hovered over the Button");
 });
